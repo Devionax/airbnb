@@ -1,0 +1,57 @@
+<%- include("../partial/header") %>
+
+<div class="page-background-centering-wrapper">
+  <div class="main-content-container">
+    <h1 class="page-title-heading">Login TO Airbnb 🏡</h1>
+    <form class="neumorphic-home-registration-form" action="/login" method="POST" style="display: flex !important; flex-direction: column !important;">
+      <% if (errorMessages && errorMessages.length > 0) { %>
+      <div class="nu-error-box" id="nu-error-box" style="margin-top:0 !important;">
+        <span class="nu-error-close" id="nu-error-close">&times;</span>
+        <ul>
+          <% errorMessages.forEach((message) =>{ %>
+          <li><%= message %></li>
+          <% }); %>
+        </ul>
+      </div>
+      <% } %>
+
+      <!-- Address (Right) -->
+      <div class="input-group-container">
+        <label for="email">Email</label>
+        <input type="text" id="email" name="userMail" placeholder="example@gmail.com" value="<%= oldUserData.userMail ? oldUserData.userMail : '' %>" required />
+      </div>
+
+      <!-- Rooms (Left) -->
+      <div class="input-group-container" style=" position: relative;">
+        <label for="password">password</label>
+        <input type="password" id="password" name="userPassword" value="<%= oldUserData.userPassword ? oldUserData.userPassword : '' %>" required />
+        <span id="togglePassword">👁️</span>
+      </div>
+
+
+      <!-- Submit (Spans full width) -->
+      <button class="submit-button-action" type="submit">Login Now</button>
+    </form>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const passInput = document.getElementById("password");
+    const toggle = document.getElementById("togglePassword");
+
+    toggle.addEventListener("click", () => {
+      const isHidden = passInput.type === "password";
+      passInput.type = isHidden ? "text" : "password";
+
+      toggle.classList.toggle("visible");
+    });
+  });
+  document.getElementById("nu-error-close").addEventListener("click", () => {
+    document.getElementById("nu-error-box").style.display = "none";
+  });
+</script>
+
+</body>
+
+</html>

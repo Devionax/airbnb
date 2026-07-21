@@ -1,0 +1,124 @@
+<% let activePage; if (!currentPage) { activePage = "noActive"; } else {
+activePage = currentPage; } %>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= pageTitle%></title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="/addhome.css" />
+    <link rel="stylesheet" href="/index.css" />
+    <link rel="stylesheet" href="/displayHouses.css" />
+    <link rel="stylesheet" href="/error.css" />
+    <link rel="stylesheet" href="/singleHomeInfo.css" />
+    <link rel="stylesheet" href="/alert.css" />
+    <link rel="stylesheet" href="/signup.css" />
+    <style>
+      .active-link-page {
+        box-shadow: inset 3px 3px 6px #b8b9be, inset -3px -3px 6px #ffffff !important;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="header">
+      <!-- LOGO -->
+      <div class="logo">
+        <img
+          class="logo-icon"
+          src="https://upload.wikimedia.org/wikipedia/commons/6/69/Airbnb_Logo_Bélo.svg"
+          alt="Airbnb Logo"
+        />
+      </div>
+
+      <!-- NAVIGATION -->
+      <nav class="nav-links">
+        <a
+          href="/"
+          class="<%= activePage === 'home' ? 'active-link-page' : '' %>"
+          >Home</a
+        >
+        <% if(isLogined){%>
+        <a
+          href="/house_List"
+          class="<%= activePage === 'housesList' ? 'active-link-page' : '' %>"
+          >Houses</a
+        >
+        <a
+          href="/favourite_houses_list"
+          class="<%= activePage === 'favouriteHousesList' ? 'active-link-page' : '' %>"
+          >Favourite Houses</a
+        >
+        <a
+          href="/house_booking"
+          class="<%= activePage === 'booking' ? 'active-link-page' : '' %>"
+          >Booking</a
+        >
+        <% if(enterUserData.userRole === "host"){ %> 
+        <a
+          href="/host/hostHouses"
+          class="<%= activePage === 'hostList' ? 'active-link-page' : '' %>"
+          >Host Houses</a
+        >
+        <% } %>
+      </nav>
+
+      <!-- SEARCH -->
+      <div class="search-box">
+        <img
+          class="search-icon"
+          src="https://cdn-icons-png.flaticon.com/512/622/622669.png"
+          alt="Search Icon"
+        />
+        <input type="text" placeholder="Search homes, places..." />
+      </div>
+
+      <% }%>
+      <div class="account">
+        <% if(!isLogined){ %>
+        <nav class="nav-links">
+          <a href="/login"><i class="fa-solid fa-road-lock"></i> login</a>
+          <% if(!isUserSignUp){ %>
+          <a href="/signup"><i class="fa-solid fa-user-plus"></i> signup</a>
+          <%} %>
+        </nav>
+        <%}else{ %>
+        <div class="user-menu">
+          <div class="user-box">
+            <span class="username"><%= enterUserData.userName ? enterUserData.userName : "Username" %></span>
+            <span class="arrow">▼</span>
+          </div>
+
+          <div class="dropdown">
+            <form action="/logOut" method="POST" class="logout-form">
+              <button type="submit" class="neo-btn accent">
+                <i class="fas fa-right-from-bracket"></i> Log Out
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <%} %>
+      </div>
+
+      <!-- MOBILE MENU BUTTON -->
+      <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </header>
+
+    <!-- MOBILE NAVIGATION -->
+    <nav class="mobile-nav" id="mobileNav">
+      <a href="#">Home</a>
+      <a href="#">Listings</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+  </body>
+</html>

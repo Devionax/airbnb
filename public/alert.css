@@ -1,0 +1,19 @@
+/* Alert container */
+.neo-alert {
+  position: fixed;
+  top: 20px;
+  right: -300px; /* initially hidden outside screen */
+  padding: 15px 25px;
+  background: #e0e0e0;
+  color: #333;
+  border-radius: 15px;
+  box-shadow: 8px 8px 16px #bebebe, -8px -8px 16px #ffffff;
+  font-size: 16px;
+  transition: right 0.5s ease;
+  z-index: 9999;
+}
+
+/* Show class to slide in */
+.neo-alert.show {
+  right: 20px;
+}

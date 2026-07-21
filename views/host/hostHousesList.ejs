@@ -1,0 +1,95 @@
+<%- include("../partial/header") %>
+
+    <div class="page-background-centering-wrapper">
+      <div class="main-content-container">
+        <h1 class="page-title-heading">🏘️ Premium House Collection</h1>
+
+        <div class="house-grid">
+          <div class="house-grid">
+            <% allHousesCollection.forEach(houseDetail => { const {_id, Hname,
+            Haddress, Hrooms, Hrating, Hprice, Hfloor, Himg } = houseDetail; %>
+
+            <div class="house-card">
+              <div class="house-img-container">
+                <img
+                  class="house-img"
+                  src="/uploads/<%= Himg %>"
+                  alt="<%= Himg %>"
+                />
+                <div class="house-badge">Popular</div>
+              </div>
+
+              <div class="house-info">
+                <h3 class="house-title"><%= Hname %></h3>
+
+                <div class="details">
+                  <div class="detail-row">
+                    <span class="detail-icon">📍</span>
+                    <span class="detail-text"><%= Haddress %></span>
+                  </div>
+
+                  <div class="detail-row">
+                    <span class="detail-icon">🛋️</span>
+                    <span class="detail-text"><%= Hrooms %> Rooms</span>
+                  </div>
+
+                  <div class="detail-row">
+                    <span class="detail-icon">🏗️</span>
+                    <span class="detail-text"><%= Hfloor %> Floors</span>
+                  </div>
+
+                  <div class="detail-row">
+                    <span class="detail-icon">📏</span>
+                    <span class="detail-text">2,500 sq ft</span>
+                  </div>
+                </div>
+
+                <div class="rating-container">
+                  <div class="rating-stars">
+                    <% for (let i = 0; i < Math.floor(Hrating); i++) { %>
+                    <span class="star">★</span>
+                    <% } %> <% if (Hrating % 1 !== 0) { %>
+                    <span class="star">½</span>
+                    <% } %>
+                  </div>
+                  <span class="rating-text"><%= Hrating %> / 5</span>
+                </div>
+
+                <div class="price-container">
+                  <div class="price-tag">
+                    <span class="price-label">PRICE PER NIGHT</span>
+                    <div>
+                      <span class="price-value">$<%= Hprice %></span>
+                      <span class="price-period">/night</span>
+                    </div>
+                  </div>
+                 <div class="button-wrapper">
+                      <a href="editHouse/<%= _id %>">
+                        <button class="booking-btn">
+                        <span class="btn-icon">✏️</span> Edit
+                      </button>
+                      </a>
+                      <a href="deleteHouse/<%= _id %>">
+                        <button class="booking-btn">
+                          <span class="btn-icon">🗑️</span> Delete
+                        </button>
+                      </a>
+                </div>
+
+                </div>
+              </div>
+            </div>
+
+            <% }); %>
+          </div>
+        </div>
+
+        <div class="house-footer">
+          <a class="house-btn" href="/">
+            <span class="btn-icon">⬅️</span> Back to Home
+          </a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

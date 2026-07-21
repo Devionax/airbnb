@@ -1,0 +1,136 @@
+/* Wrapper */
+.single-page-wrapper {
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+  background: #e0e0e0;
+}
+
+/* Main card */
+.single-card {
+  width: 900px;
+  background: #e0e0e0;
+  padding: 35px;
+  border-radius: 30px;
+  box-shadow: 9px 9px 18px #bcbcbc, -9px -9px 18px #ffffff;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+/* Image section */
+.single-img-container {
+  position: relative;
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow: inset 5px 5px 10px #bababa, inset -5px -5px 10px #ffffff;
+}
+
+.single-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.single-badge {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: #e0e0e0;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-weight: bold;
+  box-shadow: inset 3px 3px 6px #b8b9be, inset -3px -3px 6px #ffffff;
+}
+
+/* Info area */
+.single-info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.single-title {
+  font-size: 32px;
+  font-weight: 700;
+  text-shadow: 1px 1px 0 #fff;
+}
+
+.single-rating {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.star {
+  font-size: 22px;
+  color: gold;
+}
+
+.single-details .detail-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.detail-icon {
+  font-size: 20px;
+  margin-right: 8px;
+}
+
+/* Price Box */
+.single-price-box {
+  background: #e0e0e0;
+  padding: 20px;
+  width: fit-content;
+  border-radius: 20px;
+  box-shadow: inset 5px 5px 10px #b8b9be, inset -5px -5px 10px #ffffff;
+}
+
+.price-title {
+  font-size: 13px;
+  opacity: 0.6;
+}
+
+.price-line {
+  margin-top: 5px;
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.price-amount {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+/* Buttons */
+.neo-btn {
+  padding: 12px 20px;
+  border-radius: 16px;
+  border: none;
+  cursor: pointer;
+  background: #e0e0e0;
+  box-shadow: 5px 5px 10px #bcbcbc, -5px -5px 10px #ffffff;
+  transition: 0.2s ease;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.neo-btn:active {
+  box-shadow: inset 5px 5px 10px #bcbcbc, inset -5px -5px 10px #ffffff;
+}
+
+.single-action-buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.book-btn {
+  background: #e0e0e0;
+}
+
+.info-btn i {
+  color: #ff6961;
+}

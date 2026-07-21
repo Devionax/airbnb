@@ -1,0 +1,96 @@
+<%- include("../partial/header") %>
+<div class="nu-wrapper">
+  
+  <div class="nu-container">
+    
+    <div class="nu-header">
+      <h2>Create your account</h2>
+      <% if (errorMessages && errorMessages.length > 0) { %>
+      <div class="nu-error-box" id="nu-error-box">
+        <span class="nu-error-close" id="nu-error-close">&times;</span>
+          <ul>
+            <% errorMessages.forEach((message) =>{ %>
+              <li><%= message %></li>
+            <% }); %>
+          </ul>
+        </div>
+        <% } %>
+      </div>
+
+    <form id="nu-signup" action="/signup" method="POST">
+
+      <div class="nu-group">
+        <label class="nu-label" for="nu-name">Full Name</label>
+        <i class="fas fa-user nu-icon"></i>
+        <input type="text" id="nu-name" value="<%= oldUserData.userName ? oldUserData.userName : '' %>" name="userName" class="nu-input" placeholder="Enter your full name" required>
+      </div>
+
+      <div class="nu-group">
+        <label class="nu-label" for="nu-email">Email Address</label>
+        <i class="fas fa-envelope nu-icon"></i>
+        <input type="email" id="nu-email" name="userMail" value="<%= oldUserData.userMail ? oldUserData.UserMail : '' %>" class="nu-input" placeholder="Enter your email" required>
+      </div>
+
+      <div class="nu-group">
+        <label class="nu-label" for="nu-password">Password</label>
+        <i class="fas fa-lock nu-icon"></i>
+        <input type="password" name="userPassword" value="<%= oldUserData.userPassword ? oldUserData.userPassword : '' %>" id="nu-password" class="nu-input" placeholder="Create password" required>
+      </div>
+
+      <div class="nu-group">
+        <label class="nu-label" for="nu-confirm">Confirm Password</label>
+        <i class="fas fa-lock nu-icon"></i>
+        <input type="password" id="nu-confirm" value="<%= oldUserData.userConfirmPassword ? oldUserData.userConfirmPassword : '' %>" name="userConfirmPassword" class="nu-input" placeholder="Confirm password" required>
+      </div>
+      <div class="nu-radiowrap">
+        <label class="nu-radiolabel">Select Role</label>
+
+        <div class="nu-radioitem">
+          <input type="radio" id="nu-host" name="userRole" value="host" checked="<%= oldUserData.userRole === 'host'%>" required>
+          <label for="nu-host">Host</label>
+        </div>
+
+        <div class="nu-radioitem">
+          <input type="radio" id="nu-guest" name="userRole" value="guest" checked="<%= oldUserData.userRole === 'guest'%>">
+          <label for="nu-guest">Guest</label>
+        </div>
+      </div>
+      <div class="nu-checkrow">
+        <input type="checkbox" id="nu-terms">
+        <label for="nu-terms">
+          I agree to the <a href="#">Terms</a> and <a href="#">Privacy Policy</a>
+        </label>
+      </div>
+
+      <button type="submit" class="nu-btn">Create Account</button>
+    </form>
+
+    <div class="nu-divider"><span>Or</span></div>
+
+    <p class="nu-loginlink">
+      Already registered?
+      <a href="/login">Log in</a>
+    </p>
+
+  </div>
+</div>
+
+<script>
+  const nuInputs = document.querySelectorAll('.nu-input');
+
+  nuInputs.forEach(input => {
+    input.addEventListener('focus', () => {
+      input.parentElement.querySelector('.nu-icon').style.color = '#6c63ff';
+    });
+    input.addEventListener('blur', () => {
+      input.parentElement.querySelector('.nu-icon').style.color = '#a0aec0';
+    });
+  });
+  document.getElementById("nu-error-close").addEventListener("click", () => {
+    document.getElementById("nu-error-box").style.display = "none";
+  });
+</script>
+
+</body>
+
+</html>

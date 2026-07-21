@@ -1,0 +1,209 @@
+.nu-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  background-color: #e0e5ec;
+  color: #4a5568;
+}
+
+.nu-container {
+  display: flex;
+  flex-direction: column;
+  width: 450px;
+  border-radius: 30px;
+  padding: 40px 35px;
+  background: #e0e5ec;
+  box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+}
+
+.nu-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.nu-header h2 {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.nu-header p {
+  color: #718096;
+}
+
+.nu-group {
+  margin-bottom: 25px;
+  position: relative;
+  animation: nuFade 0.45s ease-out forwards;
+}
+
+.nu-label {
+  margin-bottom: 8px;
+  display: block;
+  font-weight: 600;
+}
+
+.nu-icon {
+  position: absolute;
+  left: 18px;
+  top: 42px;
+  color: #a0aec0;
+}
+
+.nu-input {
+  width: 100%;
+  padding: 16px 16px 16px 50px;
+  border: none;
+  border-radius: 15px;
+  background: #e0e5ec;
+  font-size: 16px;
+  color: #4a5568;
+  box-shadow: inset 5px 5px 10px #b8bec7, inset -5px -5px 10px #ffffff;
+  transition: 0.3s ease;
+}
+
+.nu-input:focus {
+  outline: none;
+  box-shadow: inset 7px 7px 14px #b8bec7, inset -7px -7px 14px #ffffff;
+}
+
+.nu-checkrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 25px;
+  font-size: 14px;
+  animation: nuFade 0.5s ease-out forwards;
+}
+
+.nu-checkrow label a {
+  color: #6c63ff;
+  text-decoration: none;
+}
+
+.nu-btn {
+  width: 100%;
+  padding: 18px;
+  border-radius: 15px;
+  border: none;
+  font-size: 18px;
+  background: #6c63ff;
+  color: #fff;
+  cursor: pointer;
+  margin-bottom: 20px;
+  box-shadow: 8px 8px 16px #b8bec7, -8px -8px 16px #ffffff;
+  transition: 0.3s ease;
+}
+
+.nu-btn:hover {
+  background: #5a52e0;
+  transform: translateY(-3px);
+}
+
+.nu-divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #9aa2b1;
+  margin: 20px 0;
+  font-size: 14px;
+  animation: nuFade 0.7s ease-out forwards;
+}
+
+.nu-divider::before,
+.nu-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #d1d9e6;
+}
+
+.nu-divider span {
+  padding: 0 12px;
+}
+
+.nu-loginlink {
+  text-align: center;
+  font-size: 16px;
+  color: #718096;
+  animation: nuFade 0.9s ease-out forwards;
+}
+
+.nu-loginlink a {
+  color: #6c63ff;
+  text-decoration: none;
+}
+
+@keyframes nuFade {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.nu-radiowrap {
+  margin-bottom: 10px;
+  animation: nuFade 0.45s ease-out forwards;
+  display: flex;
+}
+
+.nu-radiolabel {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: #4a5568;
+}
+
+.nu-radioitem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+  font-size: 15px;
+  color: #4a5568;
+  margin-left: 15px;
+}
+
+
+.nu-error-box {
+    width: 100%;
+    max-width: 450px;
+    margin-top: 17px;
+    padding: 18px 20px;
+    border-radius: 15px;
+    background: #ffe5e5;
+    color: #b30000;
+    position: relative;
+    font-size: 15px;
+    box-shadow:
+        8px 8px 16px #b8bec7,
+        -8px -8px 16px #ffffff;
+    border: 1px solid #ffb3b3;
+    animation: nuFade 0.4s ease-out forwards;
+}
+
+.nu-error-box ul {
+    padding-left: 20px;
+}
+
+.nu-error-close {
+    position: absolute;
+    right: 14px;
+    top: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    color: #b30000;
+    font-weight: bold;
+}
+.nu-error-box ul li{
+  text-align: left;
+}
+.nu-error-close:hover {
+    color: #ff0000;
+}

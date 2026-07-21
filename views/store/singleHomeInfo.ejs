@@ -1,0 +1,115 @@
+<%- include("../partial/header") %>
+
+<div class="single-page-wrapper">
+
+  <div class="single-card">
+    <% const { _id, Hname, Haddress, Hrooms, Hrating, Hprice, Hfloor, Himg} = singleHomeData; %>
+    <div class="single-img-container">
+      <img src="/uploads/<%= Himg %>" alt="<%= Hname %>" class="single-img" />
+      <div class="single-badge">Featured</div>
+    </div>
+
+    <div class="single-info">
+
+      <h1 class="single-title"><%= Hname %></h1>
+
+      <div class="single-rating">
+        <div class="rating-stars">
+          <% for (let i = 0; i < Math.floor(Hrating); i++) { %>
+          <span class="star">★</span>
+          <% } %>
+          <% if (Hrating % 1 !== 0) { %>
+          <span class="star">½</span>
+          <% } %>
+        </div>
+        <span class="rating-number"><%= Hrating %> / 5</span>
+      </div>
+
+      <div class="single-details">
+        <div class="detail-row">
+          <span class="detail-icon">📍</span>
+          <span class="detail-text"><%= Haddress %></span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-icon">🛋️</span>
+          <span class="detail-text"><%= Hrooms %> Rooms</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-icon">🏗️</span>
+          <span class="detail-text"><%= Hfloor %> Floors</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-icon">📏</span>
+          <span class="detail-text">2,500 sq ft</span>
+        </div>
+      </div>
+
+      <div class="single-price-box">
+        <span class="price-title">Price Per Night</span>
+        <div class="price-line">
+          <span class="price-amount">$<%= Hprice %></span>
+          <span class="price-suffix">/night</span>
+        </div>
+      </div>
+
+      <div class="single-action-buttons">
+        <a href="/house_List" class="neo-btn back-btn">
+          <span class="btn-icon">⬅️</span> Back
+        </a>
+
+        <button class="neo-btn info-btn wishHomeBtn" wishedHomeId="<%= _id %>">
+          <span class="btn-icon"><i class="fa-solid fa-heart"></i></span> Add to Wishlist
+        </button>
+
+        <button class="neo-btn book-btn">
+          <span class="btn-icon">📅</span> Book Now
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+<script>
+  document.querySelector(".wishHomeBtn").addEventListener("click", (event) => {
+    const homeId = event.target.getAttribute("wishedHomeId");
+    console.log(homeId);
+    fetch("/addToWishList", {
+      method: "post",
+      body: JSON.stringify({
+        wishedHouseId: homeId
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then(response => response.json()).then((data) => {
+      console.log(data.msg)
+      if (data) {
+        const alertEl = document.createElement('div');
+        alertEl.classList.add('neo-alert');
+        alertEl.textContent = data.msg;
+        document.body.appendChild(alertEl);
+
+        // Slide in
+        setTimeout(() => {
+          alertEl.classList.add('show');
+        }, 50);
+
+        // Slide out after 5 seconds
+        setTimeout(() => {
+          alertEl.classList.remove('show');
+          // Remove element after transition
+          setTimeout(() => {
+            alertEl.remove();
+          }, 500); // matches CSS transition duration
+        }, 5050);
+
+      }
+
+    })
+  })
+</script>
+</body>
+
+</html>
